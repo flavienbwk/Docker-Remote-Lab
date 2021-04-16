@@ -56,6 +56,12 @@ apt update
 apt-get install docker-ce docker-ce-cli containerd.io docker-compose -y
 ```
 
+Block external connections disabling Docker's iptables :
+
+```bash
+echo "{ \"iptables\": false }" > /etc/docker/daemon.json
+```
+
 ### 1d. Configure the daemon
 
 We want to expose our daemon so our local machine can connect to it.
@@ -140,4 +146,7 @@ docker run hello-world:latest
 
 You can now develop on your remote server.
 
-Remind yourself that your Docker volumes must be **mounted from `/root/Dev/*`** as it is the shared folder in your remote VPS
+Remind yourself :
+
+- Volumes must be **mounted from `/root/Dev/*`** as it is the shared folder in your remote VPS
+- SSH-Forward ports used by your containers with commands similar to `ssh -4L 8080:172.17.0.1:8080 -fN root@<REMOTE_SERVER_IP>`
