@@ -128,7 +128,7 @@ ssh -4L 2376:127.0.0.1:2375 -N root@<REMOTE_SERVER_IP>
 
 ### 2c. Use the remote VPS' Docker daemon
 
-This is the key to this architecture. Configure your local Docker client to point to remote daemon :
+This is the key point of this architecture. Configure your local Docker client to point to your VPS remote daemon :
 
 ```bash
 export DOCKER_HOST=tcp://localhost:2376
